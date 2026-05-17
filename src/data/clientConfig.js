@@ -14,25 +14,37 @@ export const BUSINESS_DATA = {
     name: "Glow by Gauri",
     niche: "Bridal Makeup & Hair Artist",
     tagline: "Enhancing your natural beauty for your most special day.",
-    location: "Kothrud, Pune", // Area name for footer
-    address: "Studio 102, Premium Plaza, Near Paud Road, Kothrud, Pune - 411038", // Full address for Location section
+    location: "Kothrud, Pune",
+    address: "Studio 102, Premium Plaza, Near Paud Road, Kothrud, Pune - 411038",
 
     // 2. Contact & Social
-    whatsappNumber: "919876543210", // Include country code, no "+" or spaces
+    whatsappNumber: "919876543210",
     instagramLink: "https://instagram.com/glowbygauri",
+    instagramHandle: "@glowbygauri",
 
     // 3. WhatsApp Settings
-    ctaText: "Check Bridal Availability", // Text on the main buttons
-    whatsappPrefill: "Hi Gauri, I saw your work on your website and I'd like to check your availability for my wedding makeup!", // Message that appears in their chat
+    ctaText: "Check Bridal Availability",
+    whatsappPrefill: "Hi Gauri, I saw your work on your website and I'd like to check your availability for my wedding makeup!",
 
     // 4. Branding (Colors)
     colors: {
-      primary: "#7C2D12", // Main brand color (usually dark)
-      secondary: "#FFF7ED", // Background tint
-      accent: "#EA580C", // CTA and highlight color
+      primary: "#7C2D12",
+      secondary: "#FFF7ED",
+      accent: "#EA580C",
     },
 
-    // 5. Services / Packages
+    // 5. Hero Stats
+    stats: [
+      { label: "Happy Brides", value: "500+" },
+      { label: "Experience", value: "5yr+" },
+      { label: "Pune Based", value: "Verified" }
+    ],
+
+    // 6. About Section
+    aboutImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop",
+    aboutText: "With half a decade of experience serving the vibrant community of Pune, we've built a reputation for excellence, reliability, and an uncompromising eye for detail. Whether it's a grand wedding or an intimate celebration, we treat your moments as our own.",
+
+    // 7. Services / Packages
     services: [
       {
         title: "Full Bridal Package",
@@ -54,7 +66,7 @@ export const BUSINESS_DATA = {
       }
     ],
 
-    // 6. Portfolio / Gallery (6 images)
+    // 8. Portfolio / Gallery (6 images)
     gallery: [
       "https://images.unsplash.com/photo-1594463750939-ebb28c3f7f75?q=80&w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1526045612212-70caf35c14df?q=80&w=800&auto=format&fit=crop",
@@ -64,13 +76,13 @@ export const BUSINESS_DATA = {
       "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop"
     ],
 
-    // 7. Testimonials
+    // 9. Testimonials
     testimonials: [
       { name: "Priya Sharma", text: "Gauri made me look like a dream on my wedding day. Her attention to detail is amazing!", rating: 5 },
       { name: "Anjali Deshmukh", text: "Highly professional and punctual. The makeup stayed fresh for 12+ hours.", rating: 5 }
     ],
 
-    // 8. Process (How it works)
+    // 10. Process (How it works)
     process: [
       { title: "Consultation", description: "We discuss your outfit, skin type and preferred look." },
       { title: "Advance Booking", description: "Secure your date with a 50% advance payment." },
@@ -78,14 +90,14 @@ export const BUSINESS_DATA = {
       { title: "D-Day Magic", description: "I arrive at your venue and we create the magic!" }
     ],
 
-    // 9. FAQs
+    // 11. FAQs
     faqs: [
       { question: "Do you travel for outstation weddings?", answer: "Yes, I travel all over India. Travel and stay charges are applicable." },
       { question: "Which products do you use?", answer: "I use premium international brands like MAC, Estée Lauder, and Huda Beauty." },
       { question: "How early should I book?", answer: "Bridal dates get blocked 3-6 months in advance. Better book ASAP!" }
     ],
 
-    // 10. Map (Paste the 'src' from Google Maps Embed HTML)
+    // 12. Map
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.396593518!2d73.8124!3d18.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x8288cf507a2b975!2sKothrud%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715800000000!5m2!1sen!2sin"
   },
 
@@ -98,6 +110,7 @@ export const BUSINESS_DATA = {
     tagline: "Capturing moments that tell your unique love story.",
     whatsappNumber: "919876543211",
     instagramLink: "https://instagram.com/pixelperfectpune",
+    instagramHandle: "@pixelperfectpune",
     location: "Baner, Pune",
     address: "Plot 45, High Street, Baner, Pune - 411045",
     ctaText: "Check Shoot Dates",
@@ -107,6 +120,13 @@ export const BUSINESS_DATA = {
       secondary: "#F8FAFC",
       accent: "#3B82F6",
     },
+    stats: [
+      { label: "Events Shot", value: "200+" },
+      { label: "Experience", value: "8yr+" },
+      { label: "Pune Based", value: "Verified" }
+    ],
+    aboutImage: "https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=800&auto=format&fit=crop",
+    aboutText: "We believe every wedding is a cinematic experience waiting to be captured. Our team focuses on candid moments, genuine emotions, and the small details that make your day unforgettable. Based in Pune, we travel across the country to tell love stories.",
     services: [
       {
         title: "Full Wedding Coverage",
@@ -162,6 +182,7 @@ export const BUSINESS_DATA = {
     tagline: "Handcrafted happiness delivered to your doorstep.",
     whatsappNumber: "919876543212",
     instagramLink: "https://instagram.com/sugarstudio_pune",
+    instagramHandle: "@sugarstudio_pune",
     location: "Viman Nagar, Pune",
     address: "Datta Mandir Road, Viman Nagar, Pune - 411014",
     ctaText: "Order Now on WhatsApp",
@@ -171,6 +192,13 @@ export const BUSINESS_DATA = {
       secondary: "#FDF2F8",
       accent: "#DB2777",
     },
+    stats: [
+      { label: "Cakes Baked", value: "1000+" },
+      { label: "Experience", value: "4yr+" },
+      { label: "Pune Based", value: "Verified" }
+    ],
+    aboutImage: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=800&auto=format&fit=crop",
+    aboutText: "What started as a passion for baking in a small home kitchen in Viman Nagar has grown into Pune's favorite spot for custom celebration cakes. We use only the finest ingredients and zero preservatives to ensure every bite is as healthy as it is delicious.",
     services: [
       {
         title: "Designer Cakes",
@@ -226,6 +254,7 @@ export const BUSINESS_DATA = {
     tagline: "Your home away from home in the heart of Pune.",
     whatsappNumber: "919876543213",
     instagramLink: "https://instagram.com/stayeasepune",
+    instagramHandle: "@stayeasepune",
     location: "Hinjewadi, Pune",
     address: "Phase 1, Near IT Park, Hinjewadi, Pune - 411057",
     ctaText: "Book a Visit",
@@ -235,6 +264,13 @@ export const BUSINESS_DATA = {
       secondary: "#F1F5F9",
       accent: "#0F172A",
     },
+    stats: [
+      { label: "Tenants", value: "100+" },
+      { label: "Properties", value: "3+" },
+      { label: "Pune Based", value: "Verified" }
+    ],
+    aboutImage: "https://images.unsplash.com/photo-1522770179533-24471fcdba45?q=80&w=800&auto=format&fit=crop",
+    aboutText: "We redefine PG living by offering more than just a room. Our properties in Hinjewadi are curated for working professionals who value privacy, cleanliness, and a strong sense of community. From high-speed Wi-Fi to gourmet meals, we take care of everything so you can focus on your career.",
     services: [
       {
         title: "Single Occupancy",
@@ -290,6 +326,7 @@ export const BUSINESS_DATA = {
     tagline: "Give your car the showroom shine it deserves.",
     whatsappNumber: "919876543214",
     instagramLink: "https://instagram.com/eliteautospa",
+    instagramHandle: "@eliteautospa",
     location: "Kalyani Nagar, Pune",
     address: "Lane 7, Near Jogger's Park, Kalyani Nagar, Pune - 411006",
     ctaText: "Book Service",
@@ -299,6 +336,13 @@ export const BUSINESS_DATA = {
       secondary: "#111827",
       accent: "#DC2626",
     },
+    stats: [
+      { label: "Cars Served", value: "1500+" },
+      { label: "Experience", value: "10yr+" },
+      { label: "Pune Based", value: "Verified" }
+    ],
+    aboutImage: "https://images.unsplash.com/photo-1601362840469-51e4d8d59085?q=80&w=800&auto=format&fit=crop",
+    aboutText: "We are more than just a car wash. Elite Auto Spa is a state-of-the-art detailing studio in Kalyani Nagar. We use international-grade coatings and professional-grade machinery to ensure your vehicle gets the protection and shine it truly deserves.",
     services: [
       {
         title: "Ceramic Coating",

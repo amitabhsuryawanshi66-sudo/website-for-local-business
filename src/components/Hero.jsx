@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowDownRight } from "lucide-react";
 
-export const Hero = ({ name, niche, tagline, ctaText, colors }) => {
+export const Hero = ({ name, niche, tagline, ctaText, colors, stats }) => {
   const shouldReduceMotion = useReducedMotion();
 
   const containerVariants = {
@@ -31,6 +31,13 @@ export const Hero = ({ name, niche, tagline, ctaText, colors }) => {
       }
     }
   };
+
+  // Fallback stats if not provided
+  const displayStats = stats || [
+    { value: '500+', label: 'Happy Clients' },
+    { value: '5yr+', label: 'Experience' },
+    { value: 'Pune', label: 'Based' }
+  ];
 
   return (
     <section className="relative min-h-[90svh] lg:min-h-screen flex flex-col items-center justify-center text-center container-px overflow-hidden pt-24 pb-12">
@@ -105,14 +112,10 @@ export const Hero = ({ name, niche, tagline, ctaText, colors }) => {
           </motion.button>
 
           <div className="grid grid-cols-3 gap-8 md:gap-16 pt-8 border-t border-slate-100 w-full max-w-2xl">
-            {[
-              { val: '500+', lab: 'Happy Clients' },
-              { val: '5yr+', lab: 'Experience' },
-              { val: 'Pune', lab: 'Based' }
-            ].map((stat, i) => (
+            {displayStats.map((stat, i) => (
               <div key={i} className="flex flex-col items-center">
-                <span className="text-2xl font-black" style={{ color: colors.primary }}>{stat.val}</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400">{stat.lab}</span>
+                <span className="text-2xl font-black" style={{ color: colors.primary }}>{stat.value}</span>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 text-center">{stat.label}</span>
               </div>
             ))}
           </div>

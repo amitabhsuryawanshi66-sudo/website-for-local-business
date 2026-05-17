@@ -1,53 +1,57 @@
-import { Section } from "./Section";
-import { Star, Quote } from "lucide-react";
 import { motion } from "framer-motion";
+import { Section } from "./Section";
+import { Star } from "lucide-react";
 
 export const Testimonials = ({ reviews, colors }) => {
   return (
-    <Section className="bg-slate-900 section-py">
+    <Section id="testimonials" className="bg-white section-py overflow-hidden">
       <div className="container-px">
-        <div className="text-center mb-24">
-          <motion.span
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[10px] font-black uppercase tracking-[0.4em] text-white/40 block mb-6"
-          >
-            Client Satisfaction
-          </motion.span>
-          <h2 className="text-5xl md:text-8xl font-black text-white tracking-tighter leading-[0.85]">Voices of <br/><span style={{ color: colors.accent }}>Excellence.</span></h2>
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-20">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              className="flex items-center gap-3 mb-6"
+            >
+              <div className="h-px w-10" style={{ backgroundColor: colors.accent }} />
+              <span className="text-sm font-black uppercase tracking-[0.3em]" style={{ color: colors.accent }}>Success Stories</span>
+            </motion.div>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9]">Trusted by <br/><span style={{ color: colors.accent }}>hundreds.</span></h2>
+          </div>
+          <div className="flex items-center gap-2 mb-2">
+            <div className="flex text-yellow-400">
+              {[...Array(5)].map((_, i) => <Star key={i} size={20} fill="currentColor" />)}
+            </div>
+            <span className="font-black text-xl">4.9/5 Average</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-6xl mx-auto">
-          {reviews.map((item, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {reviews.map((review, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="p-12 rounded-[3.5rem] bg-white/5 border border-white/10 backdrop-blur-sm relative group"
+              className="p-10 md:p-16 rounded-[3rem] bg-slate-50 border border-slate-100 flex flex-col justify-between"
             >
-              <div className="flex gap-1.5 mb-8">
-                {[...Array(item.rating)].map((_, i) => (
-                  <Star key={i} size={16} fill={colors.accent} color={colors.accent} />
-                ))}
-              </div>
-
-              <p className="text-2xl text-white font-medium mb-12 leading-tight tracking-tight italic">
-                "{item.text}"
-              </p>
-
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-5">
-                  <div className="w-14 h-14 rounded-full bg-white/10 border-2 border-white/20 flex items-center justify-center font-black text-white text-xl">
-                    {item.name.charAt(0)}
-                  </div>
-                  <div>
-                    <div className="font-black text-white text-lg leading-none mb-1">{item.name}</div>
-                    <div className="text-[10px] font-black uppercase tracking-widest text-white/40">Verified Booking</div>
-                  </div>
+              <div>
+                <div className="flex gap-1 mb-8 text-yellow-400">
+                  {[...Array(review.rating)].map((_, i) => (
+                    <Star key={i} size={18} fill="currentColor" />
+                  ))}
                 </div>
-                <div className="hidden sm:block opacity-20" style={{ color: colors.accent }}>
-                  <Quote size={48} fill="currentColor" />
+                <p className="text-2xl md:text-3xl font-bold tracking-tight leading-snug mb-10 italic text-slate-800">
+                  "{review.text}"
+                </p>
+              </div>
+              <div className="flex items-center gap-5">
+                <div className="w-14 h-14 rounded-full flex items-center justify-center text-xl font-black text-white" style={{ backgroundColor: colors.primary }}>
+                  {review.name.charAt(0)}
+                </div>
+                <div>
+                  <div className="font-black text-lg">{review.name}</div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-slate-400">Verified Customer</div>
                 </div>
               </div>
             </motion.div>

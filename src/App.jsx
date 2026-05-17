@@ -55,11 +55,14 @@ function App() {
         tagline={data.tagline}
         ctaText={data.ctaText}
         colors={data.colors}
+        stats={data.stats}
       />
 
       <About
         name={data.name}
         colors={data.colors}
+        image={data.aboutImage}
+        text={data.aboutText}
       />
 
       <Services
@@ -71,6 +74,7 @@ function App() {
       <Gallery
         images={data.gallery}
         colors={data.colors}
+        instagramHandle={data.instagramHandle}
       />
 
       <HowItWorks
