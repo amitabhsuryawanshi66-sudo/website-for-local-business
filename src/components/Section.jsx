@@ -1,14 +1,33 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 export const Section = ({ children, className = "", id }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  const variants = {
+    hidden: {
+      opacity: 0,
+      y: shouldReduceMotion ? 0 : 20,
+      scale: shouldReduceMotion ? 1 : 0.98
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
   return (
     <motion.section
       id={id}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial="hidden"
+      whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`py-16 px-6 md:px-12 max-w-7xl mx-auto ${className}`}
+      variants={variants}
+      className={`${className}`}
     >
       {children}
     </motion.section>

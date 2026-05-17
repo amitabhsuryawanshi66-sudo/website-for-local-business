@@ -1,8 +1,29 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Section } from "./Section";
 import { Check, ArrowRight } from "lucide-react";
 
 export const Services = ({ services, colors }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
   return (
     <Section id="services" className="bg-slate-50/30 section-py">
       <div className="container-px">
@@ -11,6 +32,7 @@ export const Services = ({ services, colors }) => {
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
               className="flex items-center gap-3 mb-6"
             >
               <div className="h-px w-10" style={{ backgroundColor: colors.accent }} />
@@ -23,14 +45,17 @@ export const Services = ({ services, colors }) => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
+        >
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.8 }}
+              variants={itemVariants}
               className="premium-card flex flex-col h-full overflow-hidden"
             >
               <div className="relative h-80 overflow-hidden group">
@@ -73,6 +98,7 @@ export const Services = ({ services, colors }) => {
 
                 <motion.button
                   whileHover={{ x: 5 }}
+                  whileTap={{ scale: 0.98 }}
                   className="w-full py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-3 bg-slate-900 text-white shadow-xl hover:shadow-2xl active:scale-[0.98]"
                 >
                   Book this Package
@@ -81,7 +107,7 @@ export const Services = ({ services, colors }) => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </Section>
   );

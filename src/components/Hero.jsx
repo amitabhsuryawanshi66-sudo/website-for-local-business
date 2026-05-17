@@ -1,33 +1,64 @@
-import { motion } from "framer-motion";
-import { ChevronRight, ArrowDownRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowDownRight } from "lucide-react";
 
 export const Hero = ({ name, niche, tagline, ctaText, colors }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: {
+      opacity: 0,
+      y: shouldReduceMotion ? 0 : 30,
+      filter: shouldReduceMotion ? "none" : "blur(10px)"
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      filter: "blur(0px)",
+      transition: {
+        duration: 0.8,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
   return (
     <section className="relative min-h-[90svh] lg:min-h-screen flex flex-col items-center justify-center text-center container-px overflow-hidden pt-24 pb-12">
-      {/* Visual Background Noise/Texture */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none -z-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
 
-      {/* Animated Gradients */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
         <motion.div
-          animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
+          animate={shouldReduceMotion ? {} : { x: [0, 50, 0], y: [0, 30, 0] }}
           transition={{ duration: 20, repeat: Infinity }}
           className="absolute top-[-10%] right-[-10%] w-[60%] aspect-square rounded-full blur-[120px] opacity-20"
           style={{ backgroundColor: colors.accent }}
         />
         <motion.div
-          animate={{ x: [0, -40, 0], y: [0, -20, 0] }}
+          animate={shouldReduceMotion ? {} : { x: [0, -40, 0], y: [0, -20, 0] }}
           transition={{ duration: 25, repeat: Infinity }}
           className="absolute bottom-[-10%] left-[-10%] w-[60%] aspect-square rounded-full blur-[120px] opacity-20"
           style={{ backgroundColor: colors.primary }}
         />
       </div>
 
-      <div className="max-w-5xl relative z-10">
-        {/* Availability Badge */}
+      <motion.div
+        className="max-w-5xl relative z-10"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
+          variants={itemVariants}
           className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/5 border border-slate-900/10 mb-10"
         >
           <span className="relative flex h-2 w-2">
@@ -40,9 +71,7 @@ export const Hero = ({ name, niche, tagline, ctaText, colors }) => {
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          variants={itemVariants}
           className="text-5xl sm:text-7xl lg:text-[100px] font-black tracking-tight text-slate-900 mb-8 leading-[0.9] flex flex-col"
         >
           <span>{name.split(' ')[0]}</span>
@@ -52,9 +81,7 @@ export const Hero = ({ name, niche, tagline, ctaText, colors }) => {
         </motion.h1>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
+          variants={itemVariants}
           className="flex flex-col md:flex-row items-center justify-center gap-4 mb-12"
         >
           <span className="h-px w-8 bg-slate-200 hidden md:block" />
@@ -64,9 +91,9 @@ export const Hero = ({ name, niche, tagline, ctaText, colors }) => {
           <span className="h-px w-8 bg-slate-200 hidden md:block" />
         </motion.div>
 
-        <div className="flex flex-col items-center gap-8">
+        <motion.div variants={itemVariants} className="flex flex-col items-center gap-8">
           <motion.button
-            whileHover={{ scale: 1.02 }}
+            whileHover={{ scale: 1.02, y: -2 }}
             whileTap={{ scale: 0.98 }}
             className="w-full sm:w-auto px-12 py-6 rounded-full font-black text-xl text-white shadow-2xl flex items-center justify-center gap-3 transition-transform relative group overflow-hidden"
             style={{ backgroundColor: colors.primary }}
@@ -89,8 +116,8 @@ export const Hero = ({ name, niche, tagline, ctaText, colors }) => {
               </div>
             ))}
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 };

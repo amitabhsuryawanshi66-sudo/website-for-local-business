@@ -1,8 +1,27 @@
 import { Section } from "./Section";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Camera, ArrowUpRight } from "lucide-react";
 
 export const Gallery = ({ images, colors }) => {
+  const shouldReduceMotion = useReducedMotion();
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, scale: shouldReduceMotion ? 1 : 0.9 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
+    }
+  };
+
   return (
     <Section className="bg-white section-py">
       <div className="container-px">
@@ -11,6 +30,7 @@ export const Gallery = ({ images, colors }) => {
             <motion.div
               initial={{ x: -20, opacity: 0 }}
               whileInView={{ x: 0, opacity: 1 }}
+              viewport={{ once: true }}
               className="flex items-center gap-3 mb-6"
             >
               <div className="h-px w-10" style={{ backgroundColor: colors.accent }} />
@@ -22,6 +42,7 @@ export const Gallery = ({ images, colors }) => {
           <motion.a
             href="#"
             whileHover={{ y: -5 }}
+            whileTap={{ scale: 0.98 }}
             className="group flex items-center gap-4 bg-slate-50 px-8 py-5 rounded-[2rem] border border-slate-100 transition-all hover:bg-slate-900 hover:text-white"
           >
             <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white shadow-sm text-slate-900 group-hover:scale-110 transition-transform">
@@ -37,14 +58,17 @@ export const Gallery = ({ images, colors }) => {
           </motion.a>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 auto-rows-[250px] md:auto-rows-[350px]">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 auto-rows-[250px] md:auto-rows-[350px]"
+        >
           {images.slice(0, 6).map((img, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              variants={itemVariants}
               className={`relative overflow-hidden rounded-[2.5rem] group cursor-pointer shadow-premium
                 ${index === 0 ? 'col-span-2 row-span-2' : ''}
                 ${index === 3 ? 'col-span-2' : ''}
@@ -58,13 +82,16 @@ export const Gallery = ({ images, colors }) => {
               <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
 
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/20 backdrop-blur-[2px]">
-                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-slate-900 shadow-2xl scale-50 group-hover:scale-100 transition-transform duration-500">
+                <motion.div
+                  whileHover={{ scale: 1.1 }}
+                  className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-slate-900 shadow-2xl scale-50 group-hover:scale-100 transition-transform duration-500"
+                >
                   <ArrowUpRight size={32} strokeWidth={2.5} />
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </Section>
   );
