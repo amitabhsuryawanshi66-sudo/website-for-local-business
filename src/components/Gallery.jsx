@@ -1,52 +1,70 @@
 import { Section } from "./Section";
 import { motion } from "framer-motion";
+import { Camera, ArrowUpRight } from "lucide-react";
 
 export const Gallery = ({ images, colors }) => {
   return (
-    <Section className="bg-white">
-      <div className="flex flex-col md:flex-row justify-between items-end gap-6 mb-16">
-        <div className="max-w-xl text-left">
-          <motion.span
-            className="text-sm font-bold uppercase tracking-[0.3em] text-slate-400 mb-4 block"
-          >
-            Visual Portfolio
-          </motion.span>
-          <h2 className="text-4xl md:text-5xl font-black tracking-tight leading-[1.1]">Moments we've <span style={{ color: colors.accent }}>captured.</span></h2>
-        </div>
-        <button
-          className="px-8 py-3 rounded-2xl font-bold border-2 border-slate-100 hover:border-slate-900 transition-colors"
-        >
-          View Instagram
-        </button>
-      </div>
+    <Section className="bg-white section-py">
+      <div className="container-px">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-20">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              className="flex items-center gap-3 mb-6"
+            >
+              <div className="h-px w-10" style={{ backgroundColor: colors.accent }} />
+              <span className="text-sm font-black uppercase tracking-[0.3em]" style={{ color: colors.accent }}>Visual Portfolio</span>
+            </motion.div>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9]">Style. Elegance. <br/><span style={{ color: colors.accent }}>Perspective.</span></h2>
+          </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[250px]">
-        {images.slice(0, 6).map((img, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: index * 0.1 }}
-            className={`relative overflow-hidden rounded-[32px] group cursor-pointer shadow-sm
-              ${index === 0 ? 'md:col-span-2 md:row-span-2' : ''}
-              ${index === 3 ? 'md:col-span-2' : ''}
-            `}
+          <motion.a
+            href="#"
+            whileHover={{ y: -5 }}
+            className="group flex items-center gap-4 bg-slate-50 px-8 py-5 rounded-[2rem] border border-slate-100 transition-all hover:bg-slate-900 hover:text-white"
           >
-            <img
-              src={img}
-              alt={`Gallery ${index}`}
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-500" />
-
-            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-              <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur flex items-center justify-center text-slate-900 shadow-xl">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white shadow-sm text-slate-900 group-hover:scale-110 transition-transform">
+              <Camera size={24} />
+            </div>
+            <div className="text-left">
+              <div className="text-xs font-black uppercase tracking-widest opacity-50">Follow on Instagram</div>
+              <div className="text-lg font-black flex items-center gap-1">
+                @thestudio_pune
+                <ArrowUpRight size={16} />
               </div>
             </div>
-          </motion.div>
-        ))}
+          </motion.a>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 auto-rows-[250px] md:auto-rows-[350px]">
+          {images.slice(0, 6).map((img, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: index * 0.1, duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className={`relative overflow-hidden rounded-[2.5rem] group cursor-pointer shadow-premium
+                ${index === 0 ? 'col-span-2 row-span-2' : ''}
+                ${index === 3 ? 'col-span-2' : ''}
+              `}
+            >
+              <img
+                src={img}
+                alt={`Portfolio Piece ${index}`}
+                className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/20 backdrop-blur-[2px]">
+                <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-slate-900 shadow-2xl scale-50 group-hover:scale-100 transition-transform duration-500">
+                  <ArrowUpRight size={32} strokeWidth={2.5} />
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </Section>
   );
