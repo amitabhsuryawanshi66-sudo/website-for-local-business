@@ -10,6 +10,7 @@ import { FAQ } from './components/FAQ';
 import { Location } from './components/Location';
 import { Footer } from './components/Footer';
 import { WhatsAppCTA } from './components/WhatsAppCTA';
+import { FinalCTA } from './components/FinalCTA';
 
 function App() {
   const [demo, setDemo] = useState('bridal_makeup');
@@ -83,6 +84,13 @@ function App() {
 
       <FAQ
         faqs={data.faqs}
+        colors={data.colors}
+      />
+
+      <FinalCTA
+        name={data.name}
+        ctaText={data.ctaText}
+        whatsappNumber={data.whatsappNumber}
         colors={data.colors}
       />
 
