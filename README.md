@@ -1,57 +1,67 @@
-# Premium Same-Day Mini Website Template
+# Premium Mini-Website Template System 🚀
 
-A mobile-first, high-conversion landing page template system designed for local businesses in Pune. Built for speed, premium aesthetics, and easy customization.
+A high-performance, mobile-first one-page website template system designed for Instagram-based local businesses in Pune. Built for speed, premium aesthetics, and high conversion.
 
-## Features
+## 🛠 Tech Stack
+- **React 19 + Vite 6**
+- **Tailwind CSS v4** (Utility-first styling)
+- **Framer Motion 12** (Premium animations)
+- **Lucide React** (Modern iconography)
 
-- 🚀 **Lightning Fast:** Built with React + Vite.
-- 🎨 **Premium Design:** Tailwind CSS with custom premium design tokens.
-- 🎬 **Smooth Animations:** Framer Motion for section fades, hover effects, and staggered lists.
-- 📱 **Mobile-First:** Optimized for Instagram browsers and mobile users.
-- ⚙️ **Config Driven:** Change the entire website by editing a single JSON-like file.
-- 💬 **WhatsApp Integrated:** Sticky CTA for direct lead generation.
-- ✨ **Motion Pass:** Tasteful premium animations for React added.
+---
 
-## Getting Started
+## 🎨 How to create a new client site (Under 20 Mins)
 
-### 1. Local Development
-
+### Step 1: Clone and Install
 ```bash
-# Install dependencies
+# Clone this repo
 npm install
-
-# Start development server
-npm run dev
 ```
 
-### 2. Customizing for a Client
+### Step 2: Customize Client Data
+Open `src/data/clientConfig.js`. This is the only file you need to touch.
+- Duplicate an existing niche block or edit the `bridal_makeup` one.
+- Update the **Business Name**, **WhatsApp Number**, and **Niche**.
+- Change the **Colors** to match their brand.
+- Update **Services**, **Pricing**, and **Gallery** (Use high-quality Unsplash links or host their photos on Imgur/Cloudinary).
 
-Open `src/config.js` and edit the `BUSINESS_DATA` object. You can:
-- Update business name, niche, and tagline.
-- Change colors (primary, secondary, accent).
-- Update WhatsApp number (use international format without `+`).
-- Add/Remove services, gallery images, and testimonials.
-- Update FAQ and process steps.
+### Step 3: Local Review
+```bash
+npm run dev
+```
+- Open `http://localhost:5173`
+- Check all WhatsApp links (use the demo switcher to view your specific niche).
+- Ensure the "Reduced Motion" accessibility works.
 
-### 3. Adding New Images
-Place images in `public/assets/` or use high-quality Unsplash/Direct URLs in the config.
+### Step 4: Build for Production
+```bash
+npm run build
+```
+This generates a `dist/` folder. It's extremely lightweight (~113kb).
 
-## Deployment
+### Step 5: Deploy
+- **Netlify:** Drag and drop the `dist/` folder.
+- **Vercel:** `vercel --prod`
+- **GitHub Pages:** Use the standard Vite deployment guide.
 
-### Netlify / Vercel
-1. Push this code to a GitHub repository.
-2. Connect your repo to Netlify or Vercel.
-3. Use the following build settings:
-   - **Build Command:** `npm run build`
-   - **Publish Directory:** `dist`
+---
 
-### GitHub Pages
-1. Install `gh-pages` package: `npm install gh-pages --save-dev`.
-2. Add `homepage` to `package.json`.
-3. Add deploy scripts to `package.json`.
-4. Run `npm run deploy`.
+## 📁 Project Structure
+- `/src/data/clientConfig.js`: **The "Control Center" for all business content.**
+- `/src/components/`: Reusable premium UI components.
+- `/src/App.jsx`: Master layout and logic.
+- `CLIENT-INFO-COLLECTION.md`: Send this to clients to get their data.
+- `BEFORE-DELIVERY-CHECKLIST.md`: Use this to QA the site before sending the link.
+- `CLIENT-HANDOVER-MESSAGE.md`: Copy-paste this message to the client on delivery.
 
-## Pricing Strategy (Pune Market)
-This template is designed to be sold for **₹1,999 – ₹3,999**.
-- **₹1,999:** Standard template with client-provided content.
-- **₹3,999:** Includes copywriting, image optimization, and 1 year of hosting/domain setup.
+---
+
+## 💡 Conversion Features Included
+- **Sticky WhatsApp CTA:** Stays at the bottom right for easy access.
+- **Contextual Prefilled Messages:** WhatsApp links automatically include the service name the user was looking at.
+- **Bento Gallery:** Premium-feel portfolio layout.
+- **Micro-interactions:** Hover and tap feedback on every button.
+- **Google Maps Integration:** Embedded map for local trust.
+
+---
+*Created for senior designers and high-ticket freelancers.*
