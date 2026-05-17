@@ -1,10 +1,11 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { Section } from "./Section";
+import { useState } from "react";
 
 export const FAQ = ({ faqs, colors }) => {
   const [openIndex, setOpenIndex] = useState(0);
+  const shouldReduceMotion = useReducedMotion();
 
   return (
     <Section className="bg-white section-py">
@@ -24,8 +25,9 @@ export const FAQ = ({ faqs, colors }) => {
 
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <div
+              <motion.div
                 key={index}
+                layout={!shouldReduceMotion}
                 className={`rounded-[2.5rem] transition-all duration-500 overflow-hidden ${openIndex === index ? 'bg-slate-50 shadow-sm' : 'bg-white border border-slate-100 hover:border-slate-300'}`}
               >
                 <button
@@ -33,29 +35,30 @@ export const FAQ = ({ faqs, colors }) => {
                   className="w-full p-8 md:p-10 flex items-center justify-between text-left group"
                 >
                   <span className="font-black text-xl md:text-2xl leading-tight pr-8">{faq.question}</span>
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-500 ${openIndex === index ? 'bg-slate-900 text-white rotate-180' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}>
+                  <motion.div
+                    animate={{ rotate: openIndex === index ? 180 : 0 }}
+                    className={`w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-colors duration-500 ${openIndex === index ? 'bg-slate-900 text-white' : 'bg-slate-100 text-slate-400 group-hover:bg-slate-200'}`}
+                  >
                     {openIndex === index ? (
                       <Minus size={24} strokeWidth={3} />
                     ) : (
                       <Plus size={24} strokeWidth={3} />
                     )}
-                  </div>
+                  </motion.div>
                 </button>
-                <AnimatePresence initial={false}>
-                  {openIndex === index && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      <div className="px-8 md:px-10 pb-10 text-slate-600 text-lg md:text-xl font-medium leading-relaxed">
-                        {faq.answer}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: openIndex === index ? "auto" : 0,
+                    opacity: openIndex === index ? 1 : 0
+                  }}
+                  transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                >
+                  <div className="px-8 md:px-10 pb-10 text-slate-600 text-lg md:text-xl font-medium leading-relaxed">
+                    {faq.answer}
+                  </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>

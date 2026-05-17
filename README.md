@@ -10,6 +10,7 @@ A mobile-first, high-conversion landing page template system designed for local 
 - 📱 **Mobile-First:** Optimized for Instagram browsers and mobile users.
 - ⚙️ **Config Driven:** Change the entire website by editing a single JSON-like file.
 - 💬 **WhatsApp Integrated:** Sticky CTA for direct lead generation.
+- ✨ **Motion Pass:** Tasteful premium animations for React added.
 
 ## Getting Started
 
