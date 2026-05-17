@@ -1,29 +1,8 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Section } from "./Section";
 import { Check, ArrowRight } from "lucide-react";
 
-export const Services = ({ services, colors }) => {
-  const shouldReduceMotion = useReducedMotion();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-    }
-  };
-
+export const Services = ({ services, colors, whatsappNumber }) => {
   return (
     <Section id="services" className="bg-slate-50/30 section-py">
       <div className="container-px">
@@ -45,17 +24,14 @@ export const Services = ({ services, colors }) => {
           </p>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              variants={itemVariants}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
               className="premium-card flex flex-col h-full overflow-hidden"
             >
               <div className="relative h-80 overflow-hidden group">
@@ -67,9 +43,9 @@ export const Services = ({ services, colors }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
                 <div className="absolute bottom-8 left-8">
                   <div className="text-white text-3xl font-black mb-1">{service.price}</div>
-                  <div className="text-white/70 text-xs font-bold uppercase tracking-widest">Starting Price</div>
+                  <div className="text-white/70 text-xs font-bold uppercase tracking-widest">Base Price</div>
                 </div>
-                {index === 1 && (
+                {index === 0 && (
                   <div className="absolute top-8 right-8 bg-white px-4 py-2 rounded-full shadow-xl">
                     <span className="text-[10px] font-black uppercase tracking-widest text-slate-900">Most Popular</span>
                   </div>
@@ -82,7 +58,7 @@ export const Services = ({ services, colors }) => {
 
                 <div className="space-y-4 mb-10 flex-grow">
                   {[
-                    'Expert Stylist / Specialist',
+                    'Expert Service Delivery',
                     'Premium Product Selection',
                     'Digital Proofs included',
                     'Priority Support'
@@ -96,18 +72,20 @@ export const Services = ({ services, colors }) => {
                   ))}
                 </div>
 
-                <motion.button
+                <motion.a
+                  href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(`Hi, I'm interested in the ${service.title} package. Can you share more details?`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   whileHover={{ x: 5 }}
-                  whileTap={{ scale: 0.98 }}
                   className="w-full py-5 rounded-2xl font-black text-lg transition-all flex items-center justify-center gap-3 bg-slate-900 text-white shadow-xl hover:shadow-2xl active:scale-[0.98]"
                 >
-                  Book this Package
+                  Check Availability
                   <ArrowRight size={20} />
-                </motion.button>
+                </motion.a>
               </div>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </Section>
   );

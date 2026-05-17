@@ -2,7 +2,7 @@ import { Section } from "./Section";
 import { motion, useReducedMotion } from "framer-motion";
 import { Camera, ArrowUpRight } from "lucide-react";
 
-export const Gallery = ({ images, colors }) => {
+export const Gallery = ({ images, colors, instagramHandle }) => {
   const shouldReduceMotion = useReducedMotion();
 
   const containerVariants = {
@@ -23,7 +23,7 @@ export const Gallery = ({ images, colors }) => {
   };
 
   return (
-    <Section className="bg-white section-py">
+    <Section id="gallery" className="bg-white section-py">
       <div className="container-px">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-20">
           <div className="max-w-2xl">
@@ -39,8 +39,7 @@ export const Gallery = ({ images, colors }) => {
             <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9]">Style. Elegance. <br/><span style={{ color: colors.accent }}>Perspective.</span></h2>
           </div>
 
-          <motion.a
-            href="#"
+          <motion.div
             whileHover={{ y: -5 }}
             whileTap={{ scale: 0.98 }}
             className="group flex items-center gap-4 bg-slate-50 px-8 py-5 rounded-[2rem] border border-slate-100 transition-all hover:bg-slate-900 hover:text-white"
@@ -51,11 +50,11 @@ export const Gallery = ({ images, colors }) => {
             <div className="text-left">
               <div className="text-xs font-black uppercase tracking-widest opacity-50">Follow on Instagram</div>
               <div className="text-lg font-black flex items-center gap-1">
-                @thestudio_pune
+                {instagramHandle || "@thestudio_pune"}
                 <ArrowUpRight size={16} />
               </div>
             </div>
-          </motion.a>
+          </motion.div>
         </div>
 
         <motion.div
@@ -78,6 +77,7 @@ export const Gallery = ({ images, colors }) => {
                 src={img}
                 alt={`Portfolio Piece ${index}`}
                 className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
 

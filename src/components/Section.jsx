@@ -6,15 +6,17 @@ export const Section = ({ children, className = "", id }) => {
   const variants = {
     hidden: {
       opacity: 0,
-      y: shouldReduceMotion ? 0 : 20,
-      scale: shouldReduceMotion ? 1 : 0.98
+      y: shouldReduceMotion ? 0 : 30,
+      scale: shouldReduceMotion ? 1 : 0.98,
+      filter: shouldReduceMotion ? "none" : "blur(4px)"
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
+      filter: "blur(0px)",
       transition: {
-        duration: 0.8,
+        duration: 1,
         ease: [0.16, 1, 0.3, 1]
       }
     }
@@ -25,9 +27,9 @@ export const Section = ({ children, className = "", id }) => {
       id={id}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
+      viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
       variants={variants}
-      className={`${className}`}
+      className={className}
     >
       {children}
     </motion.section>

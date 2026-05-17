@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { BUSINESS_DATA } from './config';
+import { BUSINESS_DATA } from './data/clientConfig';
 import { Hero } from './components/Hero';
 import { Services } from './components/Services';
 import { Gallery } from './components/Gallery';
@@ -29,8 +29,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white" style={{ '--brand-primary': data.colors.primary, '--brand-accent': data.colors.accent }}>
-      {/* Demo Switcher - Floating Pill (Only for demo purposes) */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] glass-morphism px-4 py-2 rounded-full flex gap-4 text-xs font-bold uppercase tracking-wider shadow-xl border border-slate-200">
+      {/* Demo Switcher - Floating Pill (For Developer/Client Review) */}
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] glass-morphism px-4 py-2 rounded-full flex gap-2 md:gap-4 text-[10px] font-bold uppercase tracking-wider shadow-xl border border-slate-200 overflow-x-auto max-w-[90vw] whitespace-nowrap">
         {Object.keys(BUSINESS_DATA).map((key) => (
           <button
             key={key}
@@ -55,21 +55,26 @@ function App() {
         tagline={data.tagline}
         ctaText={data.ctaText}
         colors={data.colors}
+        stats={data.stats}
       />
 
       <About
         name={data.name}
         colors={data.colors}
+        image={data.aboutImage}
+        text={data.aboutText}
       />
 
       <Services
         services={data.services}
         colors={data.colors}
+        whatsappNumber={data.whatsappNumber}
       />
 
       <Gallery
         images={data.gallery}
         colors={data.colors}
+        instagramHandle={data.instagramHandle}
       />
 
       <HowItWorks
@@ -91,6 +96,7 @@ function App() {
         name={data.name}
         ctaText={data.ctaText}
         whatsappNumber={data.whatsappNumber}
+        prefill={data.whatsappPrefill}
         colors={data.colors}
       />
 
@@ -113,6 +119,7 @@ function App() {
       <WhatsAppCTA
         phone={data.whatsappNumber}
         businessName={data.name}
+        prefill={data.whatsappPrefill}
       />
     </div>
   );

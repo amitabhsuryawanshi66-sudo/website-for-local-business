@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Section } from "./Section";
 
-export const About = ({ name, colors }) => {
+export const About = ({ name, colors, image, text }) => {
   return (
-    <Section className="bg-white section-py">
+    <Section id="about" className="bg-white section-py">
       <div className="container-px">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-center">
           <div className="lg:col-span-5 relative">
@@ -13,9 +13,10 @@ export const About = ({ name, colors }) => {
               className="relative aspect-[4/5] rounded-[3.5rem] overflow-hidden shadow-hover"
             >
               <img
-                src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"
-                alt={name}
+                src={image || "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop"}
+                alt={`About ${name}`}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </motion.div>
 
@@ -49,7 +50,7 @@ export const About = ({ name, colors }) => {
                 Welcome to {name}. We specialize in bringing your vision to life through a blend of artistry and technical expertise.
               </p>
               <p className="text-lg text-slate-500 font-medium leading-relaxed">
-                With half a decade of experience serving the vibrant community of Pune, we've built a reputation for excellence, reliability, and an uncompromising eye for detail. Whether it's a grand wedding or an intimate celebration, we treat your moments as our own.
+                {text || "With half a decade of experience serving the vibrant community of Pune, we've built a reputation for excellence, reliability, and an uncompromising eye for detail. Whether it's a grand wedding or an intimate celebration, we treat your moments as our own."}
               </p>
             </div>
 
