@@ -65,6 +65,7 @@ function App() {
       <Services
         services={data.services}
         colors={data.colors}
+        whatsappNumber={data.whatsappNumber}
       />
 
       <Gallery
@@ -91,6 +92,7 @@ function App() {
         name={data.name}
         ctaText={data.ctaText}
         whatsappNumber={data.whatsappNumber}
+        prefill={data.whatsappPrefill}
         colors={data.colors}
       />
 
@@ -113,6 +115,7 @@ function App() {
       <WhatsAppCTA
         phone={data.whatsappNumber}
         businessName={data.name}
+        prefill={data.whatsappPrefill}
       />
     </div>
   );

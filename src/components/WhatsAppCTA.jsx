@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 
-export const WhatsAppCTA = ({ phone, businessName }) => {
-  const message = encodeURIComponent(`Hi ${businessName}, I found your website and I'm interested in your services!`);
+export const WhatsAppCTA = ({ phone, businessName, prefill }) => {
+  const message = encodeURIComponent(prefill || `Hi ${businessName}, I'm interested in your services!`);
   const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
   const shouldReduceMotion = useReducedMotion();
 
@@ -27,7 +27,7 @@ export const WhatsAppCTA = ({ phone, businessName }) => {
       />
       <MessageCircle size={32} fill="currentColor" className="relative z-10" />
       <span className="absolute right-full mr-5 bg-slate-900 text-white px-5 py-2.5 rounded-2xl text-xs font-black uppercase tracking-widest shadow-2xl border border-slate-800 whitespace-nowrap hidden md:block opacity-0 group-hover:opacity-100 transition-all duration-300 translate-x-2 group-hover:translate-x-0">
-        Send WhatsApp
+        Enquire on WhatsApp
       </span>
     </motion.a>
   );

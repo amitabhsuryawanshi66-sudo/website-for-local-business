@@ -1,9 +1,9 @@
 import { motion } from "framer-motion";
 import { Section } from "./Section";
-import { MessageCircle, ArrowRight, ArrowUp } from "lucide-react";
+import { MessageCircle, ArrowUp } from "lucide-react";
 
-export const FinalCTA = ({ name, ctaText, whatsappNumber, colors }) => {
-  const message = encodeURIComponent(`Hi ${name}, I'm interested in working with you!`);
+export const FinalCTA = ({ name, ctaText, whatsappNumber, prefill, colors }) => {
+  const message = encodeURIComponent(prefill || `Hi ${name}, I'm interested in working with you!`);
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
 
   return (
@@ -13,7 +13,6 @@ export const FinalCTA = ({ name, ctaText, whatsappNumber, colors }) => {
           className="relative overflow-hidden rounded-[4rem] px-8 py-20 md:p-32 text-center text-white shadow-hover"
           style={{ backgroundColor: colors.primary }}
         >
-          {/* High-impact Animated Background */}
           <div className="absolute inset-0 opacity-40 mix-blend-soft-light pointer-events-none">
              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_30%_30%,_var(--tw-gradient-from)_0%,_transparent_50%)]" style={{ '--tw-gradient-from': colors.accent }} />
           </div>
@@ -49,7 +48,7 @@ export const FinalCTA = ({ name, ctaText, whatsappNumber, colors }) => {
 
               <button
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-                className="w-full sm:w-auto px-10 py-8 rounded-[2.5rem] bg-white/5 backdrop-blur-md border border-white/10 font-black text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-3"
+                className="w-full sm:w-auto px-10 py-8 rounded-[2.5rem] bg-white/10 backdrop-blur-md border border-white/10 font-black text-lg hover:bg-white/10 transition-all flex items-center justify-center gap-3"
               >
                 Go to Top
                 <ArrowUp size={24} />

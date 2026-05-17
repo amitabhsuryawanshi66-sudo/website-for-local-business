@@ -3,34 +3,35 @@ export const BUSINESS_DATA = {
     name: "Glow by Gauri",
     niche: "Bridal Makeup & Hair Artist",
     tagline: "Enhancing your natural beauty for your most special day.",
-    whatsappNumber: "919876543210", // International format without +
+    whatsappNumber: "919876543210",
     instagramLink: "https://instagram.com/glowbygauri",
     location: "Kothrud, Pune",
     address: "Studio 102, Premium Plaza, Near Paud Road, Kothrud, Pune - 411038",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.396593518!2d73.8124!3d18.5074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bf2e67461101%3A0x8288cf507a2b975!2sKothrud%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715800000000!5m2!1sen!2sin",
-    ctaText: "Book Your Slot",
+    ctaText: "Check Bridal Availability",
+    whatsappPrefill: "Hi Gauri, I saw your work on your website and I'd like to check your availability for my wedding makeup!",
     colors: {
-      primary: "#7C2D12", // Warm brown/terracotta
-      secondary: "#FFF7ED", // Soft cream
-      accent: "#EA580C", // Vibrant orange
+      primary: "#7C2D12",
+      secondary: "#FFF7ED",
+      accent: "#EA580C",
     },
     services: [
       {
-        title: "Bridal Makeup",
-        price: "₹15,000",
-        description: "HD makeup, hair styling, draping, and lashes included.",
+        title: "Full Bridal Package",
+        price: "Starts ₹15,000",
+        description: "HD makeup, luxury hair styling, saree draping, and premium lashes.",
         image: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop"
       },
       {
-        title: "Engagement Look",
-        price: "₹8,000",
-        description: "Elegant makeup and sophisticated hairstyle for your ring ceremony.",
+        title: "Engagement / Reception",
+        price: "Starts ₹8,000",
+        description: "Sophisticated look designed for your ring ceremony or reception.",
         image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=800&auto=format&fit=crop"
       },
       {
-        title: "Sider / Party Makeup",
-        price: "₹4,000",
-        description: "Flawless look for bridesmaids and family members.",
+        title: "Pre-Wedding Shoot Look",
+        price: "Starts ₹5,000",
+        description: "Photogenic makeup that looks flawless on camera and in person.",
         image: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=800&auto=format&fit=crop"
       }
     ],
@@ -56,12 +57,12 @@ export const BUSINESS_DATA = {
     ],
     process: [
       { title: "Consultation", description: "We discuss your outfit, skin type and preferred look." },
-      { title: "Booking", description: "Secure your date with a 50% advance payment." },
+      { title: "Advance Booking", description: "Secure your date with a 50% advance payment." },
       { title: "Trial (Optional)", description: "Experience the look before the big day." },
       { title: "D-Day Magic", description: "I arrive at your venue and we create the magic!" }
     ],
     faqs: [
-      { question: "Do you travel to the venue?", answer: "Yes, I travel all over Pune and outstation for bridal bookings." },
+      { question: "Do you travel for outstation weddings?", answer: "Yes, I travel all over India. Travel and stay charges are applicable." },
       { question: "Which products do you use?", answer: "I use premium international brands like MAC, Estée Lauder, and Huda Beauty." },
       { question: "How early should I book?", answer: "Bridal dates get blocked 3-6 months in advance. Better book ASAP!" }
     ]
@@ -75,29 +76,30 @@ export const BUSINESS_DATA = {
     location: "Baner, Pune",
     address: "Plot 45, High Street, Baner, Pune - 411045",
     mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2612!2d73.78!3d18.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bec47a32b95b%3A0x7d6f51e39b2b51!2sBaner%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715800000000!5m2!1sen!2sin",
-    ctaText: "Check Availability",
+    ctaText: "Check Shoot Dates",
+    whatsappPrefill: "Hi Pixel Perfect, I'm interested in booking a photography session. Could you share your availability?",
     colors: {
-      primary: "#0F172A", // Deep navy
-      secondary: "#F8FAFC", // Cool white
-      accent: "#3B82F6", // Professional blue
+      primary: "#0F172A",
+      secondary: "#F8FAFC",
+      accent: "#3B82F6",
     },
     services: [
       {
-        title: "Wedding Coverage",
+        title: "Full Wedding Coverage",
         price: "Starts ₹50,000",
-        description: "Full day coverage, cinematic video, and 300+ edited photos.",
+        description: "Cinematic film, candid photography, and a premium coffee table book.",
         image: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=800&auto=format&fit=crop"
       },
       {
         title: "Pre-Wedding Shoot",
-        price: "₹15,000",
-        description: "4-hour shoot at any location in Pune with 2 outfit changes.",
-        image: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=800&auto=format&fit=crop"
+        price: "Starts ₹15,000",
+        description: "A romantic 4-hour session at a premium location in Pune.",
+        image: "https://images.unsplash.com/photo-1519741497674-611481883552?q=80&w=800&auto=format&fit=crop"
       },
       {
-        title: "Maternity Shoot",
-        price: "₹10,000",
-        description: "Beautiful indoor or outdoor portraits of your journey.",
+        title: "Maternity Portraits",
+        price: "Starts ₹10,000",
+        description: "Celebrating your journey with elegant, artistic photography.",
         image: "https://images.unsplash.com/photo-1559599101-f09722fb4948?q=80&w=800&auto=format&fit=crop"
       }
     ],
@@ -123,14 +125,14 @@ export const BUSINESS_DATA = {
     ],
     process: [
       { title: "Discussion", description: "Meeting to understand your style and timeline." },
-      { title: "Booking", description: "Lock the date with a deposit." },
-      { title: "Execution", description: "The shoot day! We keep it fun and candid." },
-      { title: "Delivery", description: "Get your edited photos within 4 weeks." }
+      { title: "Booking", description: "Lock the date with a 25% deposit." },
+      { title: "The Shoot", description: "We capture your moments while you enjoy the day." },
+      { title: "Delivery", description: "Edited high-res photos delivered in 4 weeks." }
     ],
     faqs: [
-      { question: "How long does it take to deliver photos?", answer: "Sneak peeks in 48 hours, full gallery in 4 weeks." },
-      { question: "Do you provide albums?", answer: "Yes, premium photobooks are available as add-ons." },
-      { question: "Will you travel for outstation weddings?", answer: "Yes, we love traveling! Travel and stay to be covered by the client." }
+      { question: "How long until we get the photos?", answer: "Teasers in 48 hours, full gallery within 30 days." },
+      { question: "Do you provide cinematic videos?", answer: "Yes, our team includes professional cinematographers." },
+      { question: "Can we pick our own songs for the film?", answer: "Absolutely! We want the film to feel like yours." }
     ]
   },
   bakery: {
@@ -141,30 +143,31 @@ export const BUSINESS_DATA = {
     instagramLink: "https://instagram.com/sugarstudio_pune",
     location: "Viman Nagar, Pune",
     address: "Datta Mandir Road, Viman Nagar, Pune - 411014",
-    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.2612!2d73.91!3d18.56!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b8b2135d%3A0xbb0d9f4de195748!2sViman%20Nagar%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715800000000!5m2!1sen!2sin",
-    ctaText: "Order Now",
+    mapEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.c147b8b2135d%3A0xbb0d9f4de195748!2sViman%20Nagar%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1715800000000!5m2!1sen!2sin",
+    ctaText: "Order Now on WhatsApp",
+    whatsappPrefill: "Hi Sugar Studio, I'd like to place an order for a custom cake. Could you share your menu?",
     colors: {
-      primary: "#831843", // Deep pink/burgundy
-      secondary: "#FDF2F8", // Soft blush
-      accent: "#DB2777", // Bright pink
+      primary: "#831843",
+      secondary: "#FDF2F8",
+      accent: "#DB2777",
     },
     services: [
       {
-        title: "Custom Birthday Cakes",
+        title: "Designer Cakes",
         price: "Starts ₹1,200/kg",
-        description: "Themed cakes designed specifically for your celebrations.",
+        description: "Themed cakes for birthdays, anniversaries, and more.",
         image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=800&auto=format&fit=crop"
       },
       {
-        title: "Assorted Cupcakes",
-        price: "₹600 for 6",
-        description: "Perfect for gifting or small tea-time treats.",
+        title: "Party Cupcakes",
+        price: "Starts ₹600 for 6",
+        description: "Deliciously decorated cupcakes to match your theme.",
         image: "https://images.unsplash.com/photo-1587668178277-295251f900ce?q=80&w=800&auto=format&fit=crop"
       },
       {
-        title: "Brownie Boxes",
-        price: "₹500 for 4",
-        description: "Fudgy, rich chocolate brownies that melt in your mouth.",
+        title: "Gourmet Brownies",
+        price: "Starts ₹500 for 4",
+        description: "Rich, fudgy brownies made with the finest chocolate.",
         image: "https://images.unsplash.com/photo-1564355808539-22fda35bed7e?q=80&w=800&auto=format&fit=crop"
       }
     ],
@@ -189,15 +192,15 @@ export const BUSINESS_DATA = {
       }
     ],
     process: [
-      { title: "Select Design", description: "Pick from our menu or send your own inspiration." },
-      { title: "Place Order", description: "Confirm at least 2 days in advance." },
-      { title: "Freshly Baked", description: "We bake your order just hours before delivery." },
-      { title: "Delivery/Pickup", description: "Doorstep delivery available across Pune." }
+      { title: "Pick a Design", description: "Send us your inspiration or pick from our favorites." },
+      { title: "Confirm Order", description: "Finalize flavors and pay 50% to confirm." },
+      { title: "Baking Fresh", description: "Everything is baked fresh just hours before delivery." },
+      { title: "Pick/Delivery", description: "Collect from Viman Nagar or get it delivered." }
     ],
     faqs: [
-      { question: "Do you offer eggless options?", answer: "Yes, all our cakes and bakes can be made eggless." },
-      { question: "Is delivery free?", answer: "Delivery is free within 3km of Viman Nagar. Charges apply elsewhere." },
-      { question: "Can you do same-day delivery?", answer: "For simple cakes, yes. Custom designs need 48 hours notice." }
+      { question: "How far in advance should I order?", answer: "At least 48 hours for custom designs." },
+      { question: "Do you offer healthy options?", answer: "Yes, we can do jaggery-based and whole wheat bakes on request." },
+      { question: "What is the delivery charge?", answer: "Free within 2km. Charges apply for further locations." }
     ]
   }
 };
