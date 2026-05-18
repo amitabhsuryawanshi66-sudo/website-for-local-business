@@ -1,126 +1,105 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { ArrowDownRight } from "lucide-react";
+import { ArrowUpRight, MapPin } from "lucide-react";
 
-export const Hero = ({ name, niche, tagline, ctaText, colors, stats }) => {
+export const Hero = ({ data }) => {
   const shouldReduceMotion = useReducedMotion();
+  const { name, hero, colors, location, ctaText, whatsappNumber, whatsappPrefill } = data;
 
-  const containerVariants = {
+  const container = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2
-      }
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 }
     }
   };
 
-  const itemVariants = {
-    hidden: {
-      opacity: 0,
-      y: shouldReduceMotion ? 0 : 30,
-      filter: shouldReduceMotion ? "none" : "blur(10px)"
-    },
+  const item = {
+    hidden: { opacity: 0, y: shouldReduceMotion ? 0 : 40, filter: "blur(10px)" },
     visible: {
       opacity: 1,
       y: 0,
       filter: "blur(0px)",
-      transition: {
-        duration: 0.8,
-        ease: [0.16, 1, 0.3, 1]
-      }
+      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
     }
   };
 
-  // Fallback stats if not provided
-  const displayStats = stats || [
-    { value: '500+', label: 'Happy Clients' },
-    { value: '5yr+', label: 'Experience' },
-    { value: 'Pune', label: 'Based' }
-  ];
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappPrefill)}`;
 
   return (
-    <section className="relative min-h-[90svh] lg:min-h-screen flex flex-col items-center justify-center text-center container-px overflow-hidden pt-24 pb-12">
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none -z-20 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]" />
-
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full -z-10">
-        <motion.div
-          animate={shouldReduceMotion ? {} : { x: [0, 50, 0], y: [0, 30, 0] }}
-          transition={{ duration: 20, repeat: Infinity }}
-          className="absolute top-[-10%] right-[-10%] w-[60%] aspect-square rounded-full blur-[120px] opacity-20"
-          style={{ backgroundColor: colors.accent }}
-        />
-        <motion.div
-          animate={shouldReduceMotion ? {} : { x: [0, -40, 0], y: [0, -20, 0] }}
-          transition={{ duration: 25, repeat: Infinity }}
-          className="absolute bottom-[-10%] left-[-10%] w-[60%] aspect-square rounded-full blur-[120px] opacity-20"
-          style={{ backgroundColor: colors.primary }}
-        />
+    <section className="relative min-h-screen flex flex-col justify-center container-px pt-20 pb-12 overflow-hidden">
+      {/* Editorial Background */}
+      <div className="absolute inset-0 -z-20 bg-white" />
+      <div className="absolute top-0 right-0 w-full h-full -z-10 overflow-hidden opacity-10">
+        <div className="absolute top-[-10%] right-[-10%] w-[70%] aspect-square rounded-full blur-[120px]" style={{ backgroundColor: colors.accent }} />
       </div>
 
       <motion.div
-        className="max-w-5xl relative z-10"
-        variants={containerVariants}
+        variants={container}
         initial="hidden"
         animate="visible"
+        className="w-full relative z-10"
       >
-        <motion.div
-          variants={itemVariants}
-          className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/5 border border-slate-900/10 mb-10"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full opacity-75" style={{ backgroundColor: colors.accent }} />
-            <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: colors.accent }} />
-          </span>
-          <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-600">
-            Now booking for 2024-25 in Pune
+        {/* V2 Badge */}
+        <motion.div variants={item} className="mb-12">
+          <span className="v2-badge">
+            <span className="relative flex h-2 w-2 mr-1">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-slate-500"></span>
+            </span>
+            {hero.badge}
           </span>
         </motion.div>
 
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl sm:text-7xl lg:text-[100px] font-black tracking-tight text-slate-900 mb-8 leading-[0.9] flex flex-col"
-        >
-          <span>{name.split(' ')[0]}</span>
-          <span className="text-transparent" style={{ WebkitTextStroke: `1.5px ${colors.primary}` }}>
-            {name.split(' ').slice(1).join(' ')}
-          </span>
-        </motion.h1>
+        {/* Pro Max Title Composition (Asymmetric) */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+          <div className="lg:col-span-9">
+            <motion.h1 variants={item} className="text-6xl sm:text-8xl lg:text-[140px] heading-v2 mb-8">
+              <span className="block">{name.split(' ')[0]}</span>
+              <span className="block text-transparent italic leading-[0.7]" style={{ WebkitTextStroke: `2px ${colors.primary}` }}>
+                {name.split(' ').slice(1).join(' ')}
+              </span>
+            </motion.h1>
+          </div>
 
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-col md:flex-row items-center justify-center gap-4 mb-12"
-        >
-          <span className="h-px w-8 bg-slate-200 hidden md:block" />
-          <p className="text-lg md:text-2xl text-slate-500 font-medium max-w-xl leading-snug">
-            {tagline}
-          </p>
-          <span className="h-px w-8 bg-slate-200 hidden md:block" />
-        </motion.div>
+          <div className="lg:col-span-3 lg:pb-12">
+            <motion.div variants={item} className="flex items-center gap-2 text-slate-400 mb-6 font-black uppercase tracking-widest text-[10px]">
+              <MapPin size={12} />
+              {location}
+            </motion.div>
+            <motion.p variants={item} className="text-xl md:text-2xl body-v2 mb-10 max-w-sm">
+              {hero.subheadline}
+            </motion.p>
+          </div>
+        </div>
 
-        <motion.div variants={itemVariants} className="flex flex-col items-center gap-8">
-          <motion.button
-            whileHover={{ scale: 1.02, y: -2 }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto px-12 py-6 rounded-full font-black text-xl text-white shadow-2xl flex items-center justify-center gap-3 transition-transform relative group overflow-hidden"
-            style={{ backgroundColor: colors.primary }}
-            onClick={() => document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-            <span className="relative z-10">{ctaText}</span>
-            <ArrowDownRight size={24} className="relative z-10 group-hover:rotate-45 transition-transform" />
-          </motion.button>
+        {/* Conversion & Stats Row */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pt-16 border-t border-slate-100 items-start">
+          <motion.div variants={item} className="md:col-span-4">
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-v2-primary w-full group"
+              style={{ backgroundColor: colors.primary }}
+            >
+              {ctaText}
+              <ArrowUpRight size={22} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+            </a>
+          </motion.div>
 
-          <div className="grid grid-cols-3 gap-8 md:gap-16 pt-8 border-t border-slate-100 w-full max-w-2xl">
-            {displayStats.map((stat, i) => (
-              <div key={i} className="flex flex-col items-center">
-                <span className="text-2xl font-black" style={{ color: colors.primary }}>{stat.value}</span>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-slate-400 text-center">{stat.label}</span>
+          <motion.div variants={item} className="md:col-span-8 grid grid-cols-3 gap-8 md:pl-12">
+            {hero.stats.map((stat, i) => (
+              <div key={i} className="flex flex-col">
+                <span className="text-3xl font-black mb-1" style={{ color: colors.primary }}>{stat.value}</span>
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">{stat.label}</span>
               </div>
             ))}
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
+
+      {/* Decorative vertical line */}
+      <div className="absolute right-12 bottom-0 w-px h-32 bg-slate-100 hidden lg:block" />
     </section>
   );
 };

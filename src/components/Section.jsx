@@ -3,21 +3,21 @@ import { motion, useReducedMotion } from "framer-motion";
 export const Section = ({ children, className = "", id }) => {
   const shouldReduceMotion = useReducedMotion();
 
+  // V2 Pro Max Reveal System: Heavy Blur + Smooth Slide + Editorial Feel
   const variants = {
     hidden: {
       opacity: 0,
-      y: shouldReduceMotion ? 0 : 30,
-      scale: shouldReduceMotion ? 1 : 0.98,
-      filter: shouldReduceMotion ? "none" : "blur(4px)"
+      y: shouldReduceMotion ? 0 : 60,
+      filter: shouldReduceMotion ? "none" : "blur(20px)"
     },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       filter: "blur(0px)",
       transition: {
-        duration: 1,
-        ease: [0.16, 1, 0.3, 1]
+        duration: 1.4,
+        ease: [0.16, 1, 0.3, 1], // Pro Max Easing
+        staggerChildren: 0.1
       }
     }
   };

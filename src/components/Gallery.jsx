@@ -1,97 +1,84 @@
 import { Section } from "./Section";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Camera, ArrowUpRight } from "lucide-react";
 
-export const Gallery = ({ images, colors, instagramHandle }) => {
-  const shouldReduceMotion = useReducedMotion();
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, scale: shouldReduceMotion ? 1 : 0.9 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 1, ease: [0.16, 1, 0.3, 1] }
-    }
-  };
+export const Gallery = ({ data }) => {
+  const { gallery, colors, instagramHandle, instagramLink } = data;
 
   return (
     <Section id="gallery" className="bg-white section-py">
       <div className="container-px">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-20">
-          <div className="max-w-2xl">
+        {/* V2 Header composition */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end mb-24">
+          <div className="lg:col-span-8">
             <motion.div
-              initial={{ x: -20, opacity: 0 }}
-              whileInView={{ x: 0, opacity: 1 }}
-              viewport={{ once: true }}
-              className="flex items-center gap-3 mb-6"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-4 mb-8"
             >
-              <div className="h-px w-10" style={{ backgroundColor: colors.accent }} />
-              <span className="text-sm font-black uppercase tracking-[0.3em]" style={{ color: colors.accent }}>Visual Portfolio</span>
+              <Camera size={18} />
+              <span className="text-[11px] font-black uppercase tracking-[0.4em]" style={{ color: colors.accent }}>Visual Journal</span>
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9]">Style. Elegance. <br/><span style={{ color: colors.accent }}>Perspective.</span></h2>
+            <h2 className="text-6xl md:text-[100px] heading-v2">Elegance. <br/><span className="italic" style={{ color: colors.accent }}>Perspective.</span></h2>
           </div>
 
-          <motion.div
-            whileHover={{ y: -5 }}
-            whileTap={{ scale: 0.98 }}
-            className="group flex items-center gap-4 bg-slate-50 px-8 py-5 rounded-[2rem] border border-slate-100 transition-all hover:bg-slate-900 hover:text-white"
-          >
-            <div className="w-12 h-12 rounded-full flex items-center justify-center bg-white shadow-sm text-slate-900 group-hover:scale-110 transition-transform">
-              <Camera size={24} />
-            </div>
-            <div className="text-left">
-              <div className="text-xs font-black uppercase tracking-widest opacity-50">Follow on Instagram</div>
-              <div className="text-lg font-black flex items-center gap-1">
-                {instagramHandle || "@thestudio_pune"}
-                <ArrowUpRight size={16} />
+          <div className="lg:col-span-4 lg:text-right lg:pb-4">
+            <motion.a
+              href={instagramLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-flex items-center gap-4 v2-glass px-8 py-6 rounded-[2.5rem] group hover:bg-slate-900 hover:text-white transition-all duration-500"
+            >
+              <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-900 group-hover:bg-white group-hover:scale-110 transition-all">
+                <Camera size={24} />
               </div>
-            </div>
-          </motion.div>
+              <div className="text-left">
+                <div className="text-[10px] font-black uppercase tracking-widest opacity-40 group-hover:opacity-60 transition-opacity">Latest Work</div>
+                <div className="text-lg font-black tracking-tight">{instagramHandle}</div>
+              </div>
+            </motion.a>
+          </div>
         </div>
 
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 auto-rows-[250px] md:auto-rows-[350px]"
-        >
-          {images.slice(0, 6).map((img, index) => (
-            <motion.div
-              key={index}
-              variants={itemVariants}
-              className={`relative overflow-hidden rounded-[2.5rem] group cursor-pointer shadow-premium
-                ${index === 0 ? 'col-span-2 row-span-2' : ''}
-                ${index === 3 ? 'col-span-2' : ''}
-              `}
-            >
-              <img
-                src={img}
-                alt={`Portfolio Piece ${index}`}
-                className="w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-110"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
+        {/* Pro Max Bento Portfolio (21st.dev style) */}
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-4 md:gap-6 auto-rows-[200px] md:auto-rows-[280px]">
+          {gallery.slice(0, 6).map((img, index) => {
+            const spanClass =
+              index === 0 ? 'col-span-2 row-span-2 md:col-span-3 md:row-span-2' :
+              index === 1 ? 'col-span-2 row-span-1 md:col-span-3 md:row-span-1' :
+              index === 2 ? 'col-span-1 row-span-1 md:col-span-2 md:row-span-1' :
+              index === 3 ? 'col-span-1 row-span-1 md:col-span-2 md:row-span-1' :
+              index === 4 ? 'col-span-2 row-span-1 md:col-span-2 md:row-span-1' :
+              'col-span-2 row-span-1 md:col-span-3 md:row-span-1';
 
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 bg-black/20 backdrop-blur-[2px]">
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-slate-900 shadow-2xl scale-50 group-hover:scale-100 transition-transform duration-500"
-                >
-                  <ArrowUpRight size={32} strokeWidth={2.5} />
-                </motion.div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: index * 0.1 }}
+                className={`relative overflow-hidden rounded-[3rem] shadow-premium group cursor-pointer ${spanClass}`}
+              >
+                <img
+                  src={img}
+                  alt={`Portfolio Piece ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 grayscale-[0.2] group-hover:grayscale-0"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-700" />
+
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-700 bg-black/20 backdrop-blur-[4px]">
+                  <div className="w-16 h-16 rounded-full bg-white flex items-center justify-center text-slate-900 shadow-deep scale-50 group-hover:scale-100 transition-transform duration-700">
+                    <ArrowUpRight size={28} />
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </div>
       </div>
     </Section>
   );

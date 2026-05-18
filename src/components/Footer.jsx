@@ -1,41 +1,47 @@
 import { Instagram, MapPin, Phone, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-export const Footer = ({ name, niche, location, instagram, colors }) => {
+export const Footer = ({ data }) => {
+  const { name, niche, location, instagramLink, colors } = data;
+
   return (
-    <footer className="bg-slate-900 text-white pt-32 pb-12">
-      <div className="container-px">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-24">
-          <div className="lg:col-span-2">
-            <h2 className="text-4xl font-black mb-6">{name}</h2>
-            <p className="text-slate-400 text-xl font-medium max-w-md mb-10 leading-relaxed">
-              Premium {niche.toLowerCase()} services in {location}. Focused on quality, elegance, and customer satisfaction.
+    <footer className="bg-slate-950 text-white pt-40 pb-16 relative overflow-hidden">
+      {/* Editorial Decorative Background */}
+      <div className="absolute top-0 right-0 w-full h-full opacity-5 pointer-events-none">
+        <div className="text-[250px] font-black uppercase tracking-tighter leading-none select-none">
+          {name} {name}
+        </div>
+      </div>
+
+      <div className="container-px relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-20 mb-32">
+          <div className="lg:col-span-6">
+            <h2 className="text-5xl md:text-7xl font-black mb-8 tracking-tighter">{name}</h2>
+            <p className="text-slate-400 text-2xl font-medium max-w-lg mb-12 leading-relaxed">
+              Redefining premium {niche.toLowerCase()} standards for the modern Pune lifestyle.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-6">
               <motion.a
-                href={instagram}
+                href={instagramLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={{ y: -5 }}
-                className="w-14 h-14 rounded-full bg-slate-800 flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-colors"
-                aria-label="Instagram Profile"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="w-16 h-16 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all duration-500 shadow-xl"
+                aria-label="Follow us on Instagram"
               >
-                <Instagram size={24} />
+                <Instagram size={28} />
               </motion.a>
             </div>
           </div>
 
-          <div>
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-8">Navigation</h3>
-            <ul className="space-y-4">
-              {['About', 'Services', 'Gallery', 'Reviews', 'FAQ'].map((link) => (
+          <div className="lg:col-span-3">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-slate-500 mb-10">Explore</h3>
+            <ul className="space-y-6">
+              {['About', 'Services', 'Gallery', 'Testimonials', 'FAQ'].map((link) => (
                 <li key={link}>
                   <button
-                    onClick={() => {
-                      const id = link.toLowerCase() === 'reviews' ? 'testimonials' : link.toLowerCase();
-                      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="text-lg font-bold text-slate-300 hover:text-white transition-colors"
+                    onClick={() => document.getElementById(link.toLowerCase())?.scrollIntoView({ behavior: 'smooth' })}
+                    className="text-xl font-bold text-slate-400 hover:text-white transition-colors"
                   >
                     {link}
                   </button>
@@ -44,28 +50,30 @@ export const Footer = ({ name, niche, location, instagram, colors }) => {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-xs font-black uppercase tracking-[0.2em] text-slate-500 mb-8">Contact</h3>
-            <div className="space-y-6">
-              <div className="flex items-start gap-4">
-                <MapPin className="shrink-0 mt-1" style={{ color: colors.accent }} size={20} />
-                <span className="text-lg font-bold text-slate-300">{location}</span>
+          <div className="lg:col-span-3">
+            <h3 className="text-[11px] font-black uppercase tracking-[0.4em] text-slate-500 mb-10">Visit Studio</h3>
+            <div className="space-y-10">
+              <div className="flex items-start gap-5">
+                <MapPin className="shrink-0 mt-1" style={{ color: colors.accent }} size={24} />
+                <span className="text-xl font-bold text-slate-300">{location}</span>
               </div>
-              <div className="flex items-center gap-4">
-                <Phone className="shrink-0" style={{ color: colors.accent }} size={20} />
-                <span className="text-lg font-bold text-slate-300">Available on WhatsApp</span>
+              <div className="flex items-center gap-5">
+                <Phone className="shrink-0" style={{ color: colors.accent }} size={24} />
+                <span className="text-xl font-bold text-slate-300">WhatsApp First Enquiries</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="text-slate-500 font-bold text-sm">
-            © 2024 {name}. All rights reserved.
-          </p>
-          <div className="flex items-center gap-2 text-slate-500 text-sm font-bold">
-            Designed for <span className="text-white">Premium Pune Brands</span>
-            <ArrowUpRight size={14} />
+        <div className="pt-16 border-t border-slate-900 flex flex-col md:flex-row justify-between items-center gap-10">
+          <div className="flex flex-col md:flex-row items-center gap-4 text-slate-500 font-bold text-sm">
+            <span>© 2024 {name}. All rights reserved.</span>
+            <span className="hidden md:block opacity-20">|</span>
+            <span className="text-slate-700">Premium Mini Site V2</span>
+          </div>
+          <div className="flex items-center gap-3 text-slate-500 text-sm font-black uppercase tracking-widest">
+            Handcrafted for <span className="text-white">Pune Excellence</span>
+            <ArrowUpRight size={16} />
           </div>
         </div>
       </div>
