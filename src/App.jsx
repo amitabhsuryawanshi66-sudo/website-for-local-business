@@ -7,10 +7,10 @@ import { About } from './components/About';
 import { Testimonials } from './components/Testimonials';
 import { HowItWorks } from './components/HowItWorks';
 import { FAQ } from './components/FAQ';
-import { Location } from './components/Location';
 import { Footer } from './components/Footer';
 import { WhatsAppCTA } from './components/WhatsAppCTA';
 import { FinalCTA } from './components/FinalCTA';
+import { Location } from './components/Location';
 
 function App() {
   const [demo, setDemo] = useState('bridal_makeup');
@@ -29,8 +29,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white" style={{ '--brand-primary': data.colors.primary, '--brand-accent': data.colors.accent }}>
-      {/* Demo Switcher - Floating Pill (For Developer/Client Review) */}
-      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-[100] glass-morphism px-4 py-2 rounded-full flex gap-2 md:gap-4 text-[10px] font-bold uppercase tracking-wider shadow-xl border border-slate-200 overflow-x-auto max-w-[90vw] whitespace-nowrap">
+      {/* V2 Demo Switcher (Floating Glass Pill) */}
+      <div className="fixed top-8 left-1/2 -translate-x-1/2 z-[100] v2-glass px-5 py-2.5 rounded-full flex gap-3 text-[10px] font-black uppercase tracking-widest shadow-deep border border-slate-200 no-scrollbar overflow-x-auto max-w-[90vw] whitespace-nowrap">
         {Object.keys(BUSINESS_DATA).map((key) => (
           <button
             key={key}
@@ -38,9 +38,9 @@ function App() {
               setDemo(key);
               window.history.pushState({}, '', `?demo=${key}`);
             }}
-            className={`px-3 py-1.5 rounded-full transition-all ${
+            className={`px-4 py-2 rounded-full transition-all ${
               demo === key
-                ? 'bg-slate-900 text-white'
+                ? 'bg-slate-950 text-white shadow-xl'
                 : 'text-slate-400 hover:text-slate-600'
             }`}
           >
@@ -49,48 +49,22 @@ function App() {
         ))}
       </div>
 
-      <Hero
-        name={data.name}
-        niche={data.niche}
-        tagline={data.tagline}
-        ctaText={data.ctaText}
-        colors={data.colors}
-        stats={data.stats}
-      />
+      <Hero data={data} />
 
-      <About
-        name={data.name}
-        colors={data.colors}
-        image={data.aboutImage}
-        text={data.aboutText}
-      />
+      <About data={data} />
 
-      <Services
-        services={data.services}
-        colors={data.colors}
-        whatsappNumber={data.whatsappNumber}
-      />
+      <Services data={data} />
 
-      <Gallery
-        images={data.gallery}
-        colors={data.colors}
-        instagramHandle={data.instagramHandle}
-      />
+      <Gallery data={data} />
 
-      <HowItWorks
-        steps={data.process}
-        colors={data.colors}
-      />
+      <HowItWorks data={data} />
 
       <Testimonials
         reviews={data.testimonials}
         colors={data.colors}
       />
 
-      <FAQ
-        faqs={data.faqs}
-        colors={data.colors}
-      />
+      <FAQ data={data} />
 
       <FinalCTA
         name={data.name}
@@ -108,13 +82,7 @@ function App() {
         colors={data.colors}
       />
 
-      <Footer
-        name={data.name}
-        niche={data.niche}
-        location={data.location}
-        instagram={data.instagramLink}
-        colors={data.colors}
-      />
+      <Footer data={data} />
 
       <WhatsAppCTA
         phone={data.whatsappNumber}

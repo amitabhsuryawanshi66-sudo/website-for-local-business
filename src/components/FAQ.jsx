@@ -1,45 +1,49 @@
+import { motion, AnimatePresence } from "framer-motion";
 import { Section } from "./Section";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { Plus, Minus } from "lucide-react";
 import { useState } from "react";
 
-export const FAQ = ({ faqs, colors }) => {
+export const FAQ = ({ data }) => {
+  const { faqs, colors } = data;
   const [openIndex, setOpenIndex] = useState(0);
-  const shouldReduceMotion = useReducedMotion();
 
   return (
     <Section id="faq" className="bg-slate-50 section-py">
       <div className="container-px">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-24">
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
-              className="inline-block px-4 py-1.5 rounded-full bg-white border border-slate-200 mb-6 shadow-sm"
+              className="v2-badge mb-8"
             >
-              <span className="text-[10px] font-black uppercase tracking-[0.2em]" style={{ color: colors.accent }}>Common Questions</span>
+              Curated FAQ
             </motion.div>
-            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9]">Everything you <br/><span style={{ color: colors.accent }}>need to know.</span></h2>
+            <h2 className="text-6xl md:text-[100px] heading-v2">Common <br/><span className="italic" style={{ color: colors.accent }}>questions.</span></h2>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-6">
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
               return (
                 <motion.div
                   key={index}
-                  className="bg-white rounded-[2rem] border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-white rounded-[3rem] border border-slate-100 overflow-hidden shadow-premium group"
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? -1 : index)}
-                    className="w-full px-8 md:px-12 py-8 flex items-center justify-between text-left"
+                    className="w-full px-10 md:px-14 py-10 flex items-center justify-between text-left group-hover:bg-slate-50/50 transition-colors"
                   >
-                    <span className="text-xl md:text-2xl font-bold pr-8">{faq.question}</span>
+                    <span className="text-2xl md:text-3xl font-black tracking-tight pr-8">{faq.question}</span>
                     <div
-                      className="w-10 h-10 rounded-full flex items-center justify-center shrink-0 transition-colors"
-                      style={{ backgroundColor: isOpen ? colors.primary : 'transparent', border: `1px solid ${isOpen ? colors.primary : '#e2e8f0'}`, color: isOpen ? 'white' : 'inherit' }}
+                      className="w-12 h-12 rounded-full flex items-center justify-center shrink-0 transition-all duration-500"
+                      style={{
+                        backgroundColor: isOpen ? colors.primary : 'transparent',
+                        border: `2px solid ${isOpen ? colors.primary : '#f1f5f9'}`,
+                        color: isOpen ? 'white' : 'inherit'
+                      }}
                     >
-                      {isOpen ? <Minus size={20} /> : <Plus size={20} />}
+                      {isOpen ? <Minus size={24} /> : <Plus size={24} />}
                     </div>
                   </button>
 
@@ -49,11 +53,11 @@ export const FAQ = ({ faqs, colors }) => {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                       >
-                        <div className="px-8 md:px-12 pb-10">
-                          <div className="h-px w-full bg-slate-100 mb-8" />
-                          <p className="text-lg md:text-xl text-slate-500 font-medium leading-relaxed">
+                        <div className="px-10 md:px-14 pb-12">
+                          <div className="h-px w-full bg-slate-100 mb-10" />
+                          <p className="text-xl md:text-2xl body-v2 leading-relaxed">
                             {faq.answer}
                           </p>
                         </div>
