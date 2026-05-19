@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* V4 Cinematic Depth System */
+  --shadow-v4-ink: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-v4-glow: 0 0 30px rgba(229, 62, 62, 0.1);
+
+  --brand-primary: var(--brand-primary);
+  --brand-accent: var(--brand-accent);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    background-color: #0A0A0A;
+  }
+
+  body {
+    @apply text-slate-100 bg-[#0A0A0A] selection:bg-red-600 selection:text-white;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+@layer components {
+  .v4-container {
+    @apply px-6 md:px-12 lg:px-24 max-w-screen-2xl mx-auto w-full;
+  }
+
+  .v4-section-py {
+    @apply py-24 md:py-36 lg:py-48;
+  }
+
+  /* V4 Cinematic Card */
+  .v4-card {
+    @apply bg-[#111111] rounded-[2rem] border border-white/5 shadow-v4-ink transition-all duration-700 ease-[0.16,1,0.3,1];
+  }
+
+  .v4-glass {
+    @apply bg-black/40 backdrop-blur-2xl border border-white/10;
+  }
+
+  /* Master CTA */
+  .btn-v4-ink {
+    @apply px-10 py-6 rounded-full font-black text-lg bg-white text-black shadow-2xl flex items-center justify-center gap-3 transition-transform active:scale-95;
+  }
+
+  .btn-v4-outline {
+    @apply px-10 py-6 rounded-full font-black text-lg bg-transparent text-white border border-white/20 flex items-center justify-center gap-3 transition-all hover:bg-white/5 active:scale-95;
+  }
+
+  /* Cinematic Typography */
+  .v4-heading {
+    @apply font-black tracking-tighter leading-[0.82] text-white uppercase;
+  }
+
+  .v4-subheading {
+    @apply text-slate-400 font-medium leading-relaxed;
+  }
+}
+
+/* Masking Utilities */
+.v4-no-scrollbar::-webkit-scrollbar { display: none; }
+.v4-no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }

@@ -1,7 +1,7 @@
-import { V2App } from './v2/V2App';
+import { V4App } from './v4/V4App';
 
 function App() {
-  return <V2App />;
+  return <V4App />;
 }
 
 export default App;
