@@ -7,7 +7,7 @@ export const V4Packages = ({ data }) => {
   const { services, business, theme } = data;
 
   return (
-    <V2Section id="services" className="bg-[#0A0A0A] v4-section-py border-t border-white/5">
+    <V4Section id="services" className="bg-[#0A0A0A] v4-section-py border-t border-white/5">
       <div className="v4-container">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-12 mb-24">
           <div className="max-w-3xl">
@@ -71,6 +71,6 @@ export const V4Packages = ({ data }) => {
           ))}
         </div>
       </div>
-    </V2Section>
+    </V4Section>
   );
 };
