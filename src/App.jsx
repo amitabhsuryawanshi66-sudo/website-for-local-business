@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { V2App } from './v2/V2App';
 
 function App() {

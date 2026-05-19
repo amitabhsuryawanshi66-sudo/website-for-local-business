@@ -69,7 +69,7 @@ export const V2Footer = ({ data }) => {
           <div className="flex flex-col md:flex-row items-center gap-4 text-slate-500 font-bold text-sm">
             <span>© 2024 {business.name}.</span>
             <span className="hidden md:block opacity-20">|</span>
-            <span className="text-slate-700">Premium Mini Site V2 — Installed Skills Build</span>
+            <span className="text-slate-700">Premium Mini Site V2 — Real Rebuild</span>
           </div>
           <div className="flex items-center gap-3 text-slate-500 text-sm font-black uppercase tracking-widest">
             Handcrafted in <span className="text-white">Pune</span>

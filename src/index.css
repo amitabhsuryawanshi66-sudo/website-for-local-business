@@ -1,4 +1,2 @@
 @import "tailwindcss";
-@import "./v2/styles/v2-core.css";
-
-/* Legacy globals if any, but V2 uses v2-core.css primarily */
+@import "./v2/styles/v2.css";
